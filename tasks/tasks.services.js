@@ -25,7 +25,7 @@ const postTodo = (req, res) => {
     const {title, description} = req.body
 
     if(title && description){
-        const data = taskControllers.createTodo({tile, description})
+        const data = taskControllers.createTodo({title, description})
         res.status(201).json(data)
     }else{
         res.status(400).json({message: 'Invalid Data', fields: {title: 'String', description: 'String'}})
