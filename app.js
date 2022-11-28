@@ -50,6 +50,21 @@ app.post('/todo', (req, res) => {
 
 })
 
+//Buscaremos el valor por si id
+app.get('/todo/:id', (req, res)=> {
+    const id = req.params.id;
+
+    const todo = todoDB.find(item => item.id == id)
+
+    if(todo){
+        res.status(200).json(todo)
+    } else {
+        res.status(404).json({message: 'Invalid ID'})
+    }
+
+
+})
+
 app.listen(port, () =>{
     console.log(`Server started at port ${port}`)
 })
